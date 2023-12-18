@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hi
+
+</body>
+</html>
+<script>
+
+// async function sum(){
+//     let ffs = await fetch("https://reqres.in/api/users?delay=3")
+//     let pp = await ffs.json()
+//     console.log(pp);
+//     console.log("fdshfsd");
+
+// }
+// sum()
+
+
+
+// fetch("https://reqres.in/api/users?delay=3").then(function(res){
+//     return res.json()
+// }).then(function(Fina){
+//   console.log(Fina);
+// })
+
+
+
+
+function promise(){
+    return new Promise(function(reso, reject){
+        setTimeout(function(){
+            reso({name:"ajay", id:45,age:45})
+        })
+    })
+}
+
+
+async function monar(){
+   let md = await promise()
+   console.log(md);
+}
+monar()
+
+
+</script>
