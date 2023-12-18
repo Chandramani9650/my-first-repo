@@ -6,16 +6,14 @@ let retrive = document.getElementById("retrive_data")
 let tbody = document.getElementById("tbody")
 let arr = []
 form.addEventListener('submit', function(e){
-    // e.preventDefault()
+   
     let obj = {}
 obj.name = name.value
 obj.age =  age.value
 
 arr.push(obj)
 localStorage.setItem("user_data",JSON.stringify(arr))
-// console.log(store);
-// let sas  = JSON.parse(localStorage.getItem("user_data"))
-// console.log(sas);
+
 arr = []
 
 })
