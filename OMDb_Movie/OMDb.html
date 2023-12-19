@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+        input,#submit{
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        #submit{
+            color: red;
+            width: 100%;
+            background-color: aqua;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+        }
+        #Display{
+            width: 30%;
+            /* border: 1px solid red; */
+            
+            margin-top: 40px;
+            text-align: left;
+            padding: 10px;
+          
+        }
+        img{
+            width: 100%;
+        }
+        p{
+            color: rgb(227, 37, 37);
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <div>
+        <input type="text" id="movie" placeholder="Enter your movie......">
+    </div>
+    <div>
+        <button id="submit">Search</button>
+    </div>
+
+</form>
+<div id="Display">
+    
+</div>
+
+
+
+</body>
+</html>
+<script>
+
+    let form = document.querySelector("form")
+    let movie = document.getElementById("movie")
+    let submit  = document.getElementById("submit")
+    let Display = document.getElementById("Display")
+    
+function fetc(movie){
+    fetch("http://www.omdbapi.com/?i=tt3896198&apikey=847142e9&t="+movie).then(function(res){
+  return res.json();
+}).then(function(res){
+    call(res)
+}).catch(function(err){
+    Display.innerText = err
+})
+}
+
+
+function call(res){
+
+
+if(res.Title==movie.value){
+Display.innerText = ""
+let moviename = document.createElement("h3")
+moviename.innerText = `Movie Name: ${res.Title}`
+let Actor = document.createElement("p")
+Actor.innerText = ` Actor: ${res.Actors}`
+let Award = document.createElement("p")
+Award.innerText = `Award: ${res.Awards}`
+let Boxoffice = document.createElement("p")
+Boxoffice.innerText = `BoxOffice: ${res.BoxOffice}`
+let Country = document.createElement("p")
+Country.innerText =`Country: ${res.Country}`
+let DVD = document.createElement("p")
+DVD.innerText = `DVD: ${res.DVD}`
+let director = document.createElement("p")
+director.innerText =    `Director: ${res.Director}`
+let genre = document.createElement("p")
+genre.innerText = `Genre: ${res.Genre}`
+let relese = document.createElement("p")
+relese.innerText = `Relesed: ${res.Released}`
+let runtime = document.createElement("p")
+runtime.innerText = `Runtime: ${res.Runtime}`
+let poster = document.createElement("img")
+poster.src = `Poster: ${res.Poster}`
+
+
+let writer = document.createElement("p")
+writer.innerText = `writer: ${res.Writer}`
+let year = document.createElement("p")
+year.innerText = `Year: ${res.Year}`
+
+Display.append(poster,Actor,Award,Boxoffice,Country,DVD,director,genre,relese,runtime,writer,year)
+
+
+
+
+
+}else{
+    Display.innerText = "Pleasec enter currect name of movie"
+}
+
+}
+  
+function disp(){
+    form.addEventListener('submit',function(e){
+     e.preventDefault()
+     let movi = movie.value
+   
+     fetc(movi)
+
+  
+  })
+
+  }
+  disp()
+  
+
+
+</script>
