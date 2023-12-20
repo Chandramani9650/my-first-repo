@@ -56,7 +56,6 @@
 </div>
 
 
-
 </body>
 </html>
 <script>
@@ -103,13 +102,13 @@ relese.innerText = `Relesed: ${res.Released}`
 let runtime = document.createElement("p")
 runtime.innerText = `Runtime: ${res.Runtime}`
 let poster = document.createElement("img")
-poster.src = `Poster: ${res.Poster}`
+poster.src = res.Poster
 
 
 let writer = document.createElement("p")
 writer.innerText = `writer: ${res.Writer}`
 let year = document.createElement("p")
-year.innerText = `Year: ${res.Year}`
+year.innerHTML = `Year: ${res.Year}`
 
 Display.append(poster,Actor,Award,Boxoffice,Country,DVD,director,genre,relese,runtime,writer,year)
 
